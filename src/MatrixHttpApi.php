@@ -964,7 +964,7 @@ class MatrixHttpApi {
             $waitTime = array_get($jsonResponse, 'retry_after_ms');
             $waitTime = $waitTime ?: array_get($jsonResponse, 'error.retry_after_ms', $this->default429WaitMs);
             $waitTime /= 1000;
-            sleep($waitTime);
+            sleep((int)$waitTime);
         }
 
         if ($response->getStatusCode() < 200 || $response->getStatusCode() >= 300) {
