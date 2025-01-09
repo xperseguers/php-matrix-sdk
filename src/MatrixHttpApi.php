@@ -901,8 +901,8 @@ class MatrixHttpApi {
      * @throws MatrixRequestException
      * @throws MatrixHttpLibException
      */
-    private function send(string $method, string $path, $content = null, array $queryParams = [], array $headers = [],
-                          $apiPath = self::MATRIX_V2_API_PATH, $returnJson = true) {
+    public function send(string $method, string $path, $content = null, array $queryParams = [], array $headers = [],
+                         $apiPath = self::MATRIX_V2_API_PATH, $returnJson = true) {
         $options = [];
         if (!in_array('User-Agent', $headers)) {
             $headers['User-Agent'] = 'php-matrix-sdk/' . self::VERSION;
