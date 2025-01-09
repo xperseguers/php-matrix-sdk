@@ -935,8 +935,11 @@ class MatrixHttpApi {
         ]);
 
         $endpoint = $this->baseUrl . $apiPath . $path;
-        if ($headers['Content-Type'] == "application/json" && $content !== null) {
+        if ($headers['Content-Type'] === "application/json" && $content !== null) {
             $options[RequestOptions::JSON] = $content;
+        }
+        elseif (str_starts_with($headers['Content-Type'], 'image/') && $content !== null) {
+            $options[RequestOptions::BODY] = $content;
         }
         else {
             $options[RequestOptions::FORM_PARAMS] = $content;
